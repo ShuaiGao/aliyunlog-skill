@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "aliyunlog-sls-search",
-      "source": ".",
+      "source": "https://github.com/ShuaiGao/aliyunlog-skill.git",
       "description": "Aliyun SLS log search skill with histogram support"
     }
   ]
