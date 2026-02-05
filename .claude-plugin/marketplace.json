@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Aliyun SLS log search skill with histogram support",
-    "version": "v0.1.1"
+    "version": "v0.1.2"
   },
   "plugins": [
     {
       "name": "aliyunlog-sls-search",
       "source": "./",
       "description": "Aliyun SLS log search skill with histogram support",
-      "version": "v0.1.1",
+      "version": "v0.1.2",
       "author": {
         "name": "ShuaiGao"
       },
