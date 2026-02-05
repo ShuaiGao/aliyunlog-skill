@@ -1,13 +1,30 @@
 {
   "name": "aliyunlog-skill",
+  "id": "aliyunlog-skill",
   "owner": {
     "name": "ShuaiGao"
+  },
+  "metadata": {
+    "description": "Aliyun SLS log search skill with histogram support",
+    "version": "v0.1.0"
   },
   "plugins": [
     {
       "name": "aliyunlog-sls-search",
-      "source": "https://github.com/ShuaiGao/aliyunlog-skill.git",
-      "description": "Aliyun SLS log search skill with histogram support"
+      "source": "./",
+      "description": "Aliyun SLS log search skill with histogram support",
+      "version": "v0.1.0",
+      "author": {
+        "name": "ShuaiGao"
+      },
+      "keywords": [
+        "aliyun",
+        "sls",
+        "log"
+      ],
+      "category": [
+        "Tools"
+      ]
     }
   ]
 }
