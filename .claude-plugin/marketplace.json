@@ -1,0 +1,13 @@
+{
+  "name": "aliyunlog-skill",
+  "owner": {
+    "name": "ShuaiGao"
+  },
+  "plugins": [
+    {
+      "name": "aliyunlog-sls-search",
+      "source": ".",
+      "description": "Aliyun SLS log search skill with histogram support"
+    }
+  ]
+}
