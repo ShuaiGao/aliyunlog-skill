@@ -16,15 +16,6 @@ log-tool: glog
 
 ---
 
-## Common Query Filters
-
-base_filter: "*"
-error_filter: "level:error"
-all_logs_filter: "*"
-slow_query_filter: "level:warn AND duration_query > 0"
-
----
-
 ## Log Format (Optional)
 
 ### glog (default)
