@@ -1,6 +1,6 @@
 {
   "name": "aliyunlog-sls-search",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Aliyun SLS log search skill with histogram support",
   "author": "ShuaiGao",
   "license": "MIT"
