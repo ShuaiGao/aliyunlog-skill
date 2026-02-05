@@ -22,9 +22,7 @@
         "sls",
         "log"
       ],
-      "category": [
-        "Tools"
-      ]
+      "category": "Tools"
     }
   ]
 }
