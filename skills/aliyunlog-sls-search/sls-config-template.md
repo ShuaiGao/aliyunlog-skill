@@ -10,9 +10,12 @@ log-tool: glog
 
 ## Service Mappings
 
-| alias | project       | logstore     | log_format | description | filter              |
-|------|---------------|--------------|-----------|-------------|---------------------|
-| myapp| my-log-project | my-app-logs  | glog      | My service  | service_id: myapp01 |
+| alias | project        | logstore     | log_format | client-name | description | filter              |
+|-------|----------------|--------------|------------|-------------|-------------|---------------------|
+| myapp | my-log-project | my-app-logs  | glog       |             | My service  | service_id: myapp01 |
+| other | other-project  | other-logs   | glog       | other-ak    | Other svc   |                     |
+
+> **Note**: `client-name` 列用于指定不同的阿里云凭证配置。当配置了 `client-name` 时，执行 `aliyunlog` 命令时会自动添加 `--client-name=<client-name>` 参数。
 
 ---
 

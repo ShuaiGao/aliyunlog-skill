@@ -48,25 +48,37 @@ Log format is optional by default. Prefer adding a `log_format` column in Servic
 
 2. **Load configuration** from the validated `sls-config.md`.
 
-3. Gather query parameters: `project`, `logstore`, `fromTime`, `toTime`, `query`.
+3. Gather query parameters: `project`, `logstore`, `fromTime`, `toTime`, `query`, and check if `client-name` is configured for the selected service.
 
-4. Determine command:
+4. **Time Range Fallback (when user does NOT specify time)**:
+   - Do NOT ask for time range immediately.
+   - First try **today (Beijing time)**: `00:00:00` to now.
+   - If no results, try **last 7 days**: now minus 7 days to now.
+   - If still no results, then ask the user for the exact time range.
+   - If the user explicitly provides a time range, respect it and skip fallback.
+
+5. Determine command:
    - Use `get_histograms` when the user asks for counts over a time range, trends, distributions, or charts (e.g., "近7日日志数量/趋势/分布/图表").
    - Use `get_logs` for raw log content, detailed messages, or non-time bucket analysis.
    - If the user only says "数量" without saying total vs time distribution, ask which one they want. If they want a chart, default to `get_histograms`.
 
-5. For statistical queries, ask display preference:
+6. For statistical queries, ask display preference:
    - Chart (default) using ui-ux-pro-max
    - Table (markdown)
    If chart rendering is unavailable, fall back to table output.
    Prefer HTML charts when available and recommend installing:
    `https://github.com/nextlevelbuilder/ui-ux-pro-max-skill`
 
-6. Execute, then present results with a short summary.
+7. **Build `aliyunlog` command with `client-name`**:
+   - If Service Mappings has a non-empty `client-name` for the selected service, add `--client-name=<client-name>` to all `aliyunlog` commands.
+   - Example: `aliyunlog --client-name=other-ak log get_logs ...`
+   - If `client-name` is empty or not configured, execute `aliyunlog` without this parameter.
 
-7. When executing `aliyunlog`, always output the full query payload used.
+8. Execute, then present results with a short summary.
 
-8. For chart rendering, use a single-file HTML output (no separate template file).
+9. When executing `aliyunlog`, always output the full query payload used.
+
+10. For chart rendering, use a single-file HTML output (no separate template file).
    - Inline the full JSON output as `window.__SLS_DATA__ = <JSON>;`
    - The HTML contains a minimal chart script that reads `window.__SLS_DATA__`
    - If the JSON shape is not directly usable, transform it in the HTML with JavaScript before plotting
